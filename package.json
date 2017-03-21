@@ -1,0 +1,35 @@
+{
+  "name": "vue-embed",
+  "version": "1.0.0",
+  "description": "Embed component is based on [embed.js](https://github.com/ritz078/embed.js) for Vue 2.x.",
+  "main": "src/VEmbed.vue",
+  "repository": "git@github.com:Gomah/vue-embed.git",
+  "author": "Gomah <hi@gomah.fr>",
+  "license": "MIT",
+  "files": [
+    "src/VEmbed.vue"
+  ],
+  "scripts": {
+    "lint": "eslint --ext .vue src/"
+  },
+  "keywords": [
+    "vue",
+    "vue-embed",
+    "embed.js",
+    "embed",
+    "javascript",
+    "html"
+  ],
+  "peerDependencies": {
+    "vue": ">=2"
+  },
+  "devDependencies": {
+    "eslint": "^3.18.0",
+    "eslint-config-airbnb-base": "^11.0.1",
+    "eslint-plugin-html": "^2.0.0",
+    "eslint-plugin-import": "^2.2.0"
+  },
+  "dependencies": {
+    "embed-js": "^4.2.1"
+  }
+}
