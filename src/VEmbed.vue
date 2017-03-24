@@ -1,5 +1,5 @@
 <template>
-  <div id="embed--container">
+  <div :id="id">
     <slot></slot>
   </div>
 </template>
@@ -8,6 +8,10 @@ import EmbedJS from 'embed-js';
 
 export default {
   props: {
+    id: {
+      type: String,
+      default: 'embed__container',
+    },
     options: {
       type: Object,
       default: () => ({}),
@@ -24,7 +28,7 @@ export default {
     EmbedJS.setOptions(this.options);
 
     this.vEmbed = new EmbedJS({
-      input: document.querySelector('#embed--container'),
+      input: document.querySelector(`#${this.id}`),
     });
 
     this.vEmbed.render();

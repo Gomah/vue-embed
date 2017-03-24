@@ -1,7 +1,6 @@
 module.exports = {
   root: true,
   parserOptions: {
-    sourceType: 'browser',
     sourceType: 'module',
   },
   extends: 'airbnb-base',

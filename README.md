@@ -18,10 +18,8 @@ $ npm install vue-embed --save
 
 ```vue
 <template>
-  <VEmbed :options="{ emoji: false }">
-    <p>
-    Lotus :smile: eleates vix attrahendams luna est.Advenas mori!Fermiums prarere in cubiculum!Cum cacula cantare, omnes stellaes manifestum azureus, nobilis  https://vuejs.org/ acipenseres.Cum orgia mori, omnes rationees <3 experientia alter, regius :heart: mortemes.Devatios persuadere, tanquam secundus  spatii.Heu, barcas!Cedriums observare!A falsis, lacta talis imber. :P Cur eleates peregrinatione?
-    </p>
+  <VEmbed :id="gist" :options="{ emoji: true }">
+    <p>https://gist.github.com/yyx990803/7cfec746bb8cd6ae05e72f30104c0d51</p>
   </VEmbed>
 </template>
 
@@ -35,14 +33,12 @@ export default {
 }
 </script>
 ```
+
+You also need to import the embed css file :
+```html
+<link href="https://cdn.jsdelivr.net/embed.js/4.0.0/embed.min.css" media="all" rel="stylesheet">
+```
+
 ---------------
 
 [Embed.js Documentation](https://embedjs.readme.io/)
-
----------------
-
-Todo:
-
-- [ ] Add embed css
-- [ ] Add examples
-- [ ] Publish to NPM
