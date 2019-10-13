@@ -19,12 +19,15 @@ var script = {
     };
   },
 
-  created: async function created() {
+  mounted: async function mounted() {
     var plugins = await this.loadPlugins();
 
     this.vEmbed = new EmbedJS(Object.assign({}, {input: this.$el},
       this.options,
-      {plugins: [].concat( plugins.map(function (p) { return p.default(); }) )}));
+      {plugins: [].concat( plugins.map(function (plugin) {
+          var options = plugin.options || {};
+          return plugin.module.default(options);
+        }) )}));
 
     this.vEmbed.render();
   },
@@ -44,8 +47,15 @@ var script = {
         twitter: function () { return new Promise(function(c){c(_interopNamespace(require('embed-plugin-twitter')));}); },
         instagram: function () { return new Promise(function(c){c(_interopNamespace(require('embed-plugin-instagram')));}); },
       };
+
       var pluginsToLoad = this.options.plugins;
-      return Promise.all(pluginsToLoad.map(function (plugin) { return pluginList[plugin](); }));
+
+      return Promise.all(
+        pluginsToLoad.map(async function (plugin) { return ({
+          module: await pluginList[plugin.name](),
+          options: plugin.options,
+        }); })
+      );
     },
   },
 
@@ -149,7 +159,7 @@ var __vue_staticRenderFns__ = [];
   /* scoped */
   var __vue_scope_id__ = undefined;
   /* module identifier */
-  var __vue_module_identifier__ = "data-v-691574ff";
+  var __vue_module_identifier__ = "data-v-8ed78fba";
   /* functional template */
   var __vue_is_functional_template__ = false;
   /* style inject */
@@ -194,9 +204,4 @@ if (GlobalVue) {
 
 // Inject install function into component - allows component
 // to be registered via Vue.use() as well as Vue.component()
-component.install = install;
-
-// It's possible to expose named exports when writing components that can
-// also be used as directives, etc. - eg. import { RollupDemoDirective } from 'rollup-demo';
-// export const RollupDemoDirective = component;
-exports.default=component;
+component.install = install;exports.default=component;
